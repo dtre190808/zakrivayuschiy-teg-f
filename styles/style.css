@@ -32,13 +32,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-block-size: clamp(20.1875rem, 19.2852rem + 3.8498vw, 22.75rem);
+  block-size: clamp(20.1875rem, 19.2852rem + 3.8498vw, 22.75rem);
   background-color: white;
   gap: 22px;
   border: var(--border-box, 2px solid #000);
   margin-block-start: 102px;
   max-inline-size: clamp(23.4375rem, 16.3732rem + 30.1408vw, 43.5rem);
-  min-height: 41, 6rem;
+  height: 41, 6rem;
   /* padding-top: 6.375rem; */
   margin-block-end: 104px;
   text-align: center;
@@ -151,8 +151,8 @@
   border-bottom: var(--border-box, 2px solid #000);
   width: 100%;
   height: 100%;
-  object-position: cover;
-  object-fit: top center;
+  /* object-position: cover; */
+  /* object-fit: top center; */
   padding: 0px;
   margin: 0px;
 }
@@ -170,7 +170,7 @@
   font-family: var(--base-font-family, sans-serif), sans-serif;
   font-size: 18px;
   font-style: normal;
-  font-weight: var(--heading-font-wght, 400);
+  font-variation-settings: "wght" var(--heading-font-wght, 400);
   line-height: 21px;
 }
 
@@ -349,10 +349,11 @@ dialog:not([open]) {
   position: absolute;
   z-index: -1;
   display: block;
-  transition: 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
   top: 0;
   bottom: 0;
-  right: 100%;
+  left: -100%;
+  right: 100%; 
 }
 
 .button:hover::after {
@@ -361,6 +362,10 @@ dialog:not([open]) {
   top: 0;
   bottom: 0;
   transition: 0.6s;
+}
+
+.button:not(:hover)::after {
+  transition: left 0.6s ease, right 0.6s ease;
 }
 
 .sparks {
