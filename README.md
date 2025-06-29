@@ -1,1 +1,1 @@
-https://dtre190808.github.io/zakrivayuschiy-teg-f/
+https://github.com/dtre190808/zakrivayuschiy-teg-f https://dtre190808.github.io/zakrivayuschiy-teg-f/
