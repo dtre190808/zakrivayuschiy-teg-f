@@ -32,13 +32,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  block-size: clamp(20.1875rem, 19.2852rem + 3.8498vw, 22.75rem);
+  /* block-size: clamp(20.1875rem, 19.2852rem + 3.8498vw, 22.75rem); */
+  padding: 100px;
   background-color: white;
   gap: 22px;
   border: var(--border-box, 2px solid #000);
   margin-block-start: 102px;
   max-inline-size: clamp(23.4375rem, 16.3732rem + 30.1408vw, 43.5rem);
-  height: 41, 6rem;
+  /* height: 41, 6rem; */
   /* padding-top: 6.375rem; */
   margin-block-end: 104px;
   text-align: center;
@@ -349,11 +350,12 @@ dialog:not([open]) {
   position: absolute;
   z-index: -1;
   display: block;
-  transition: all 0.6s ease-in-out;
+  transition: left 0.6s ease, right 0.6s ease; 
   top: 0;
   bottom: 0;
   left: -100%;
   right: 100%; 
+  
 }
 
 .button:hover::after {
@@ -363,10 +365,10 @@ dialog:not([open]) {
   bottom: 0;
   transition: 0.6s;
 }
-
+/* 
 .button:not(:hover)::after {
   transition: left 0.6s ease, right 0.6s ease;
-}
+} */
 
 .sparks {
   opacity: 0;
