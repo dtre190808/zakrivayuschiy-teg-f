@@ -27,27 +27,24 @@
   }
 }
 
-/* Анимация: сначала черный → пауза → красный */
 @keyframes fill-black-then-red {
   0% {
-    fill: var(--heart-contour-color, #000); /* черный */
+    fill: transparent;
   }
-  50% {
-    fill: var(--heart-contour-color, #000); /* задержка на черном */
+  70% {
+    fill: var(--heart-contour-color, #000);
   }
   100% {
-    fill: var(--heart-animation-color, #ff0000); /* красный */
+    fill: var(--heart-animation-color, #ff0000);
   }
 }
 
-/* Наведение — анимация с задержкой, но не при активном состоянии и не если уже лайкнуто */
 .like-icon:not(.is-liked):hover:not(:active) .main-body,
 .like-icon:not(.is-liked):hover:not(:active) .core {
   opacity: 1;
-  animation: fill-black-then-red 0.8s ease forwards;
+  animation: fill-black-then-red 0.9s ease-in-out forwards;
 }
 
-/* Возврат в прозрачность при уходе курсора, если не лайкнуто */
 .like-icon:not(.is-liked):not(:hover):not(:active) .core {
   fill: transparent;
   transition: 0.3s 0.03s ease fill;
@@ -58,12 +55,10 @@
   transition: 0.3s fill;
 }
 
-/* Контур */
 .like-icon .contour {
   transition: 0.1s linear fill;
 }
 
-/* Активное состояние (при клике) — сразу красное заполнение */
 .like-icon:active .core,
 .like-icon:active .main-body,
 .like-icon:active .contour {
@@ -72,7 +67,6 @@
   transition: fill 0.3s ease;
 }
 
-/* Лайкнутое состояние — всегда красное, без анимаций */
 .like-icon.is-liked .contour {
   fill: var(--heart-animation-color, #ff0000);
   transition: 0.3s 0.06s ease fill;
@@ -96,13 +90,11 @@
   fill: var(--heart-animation-color, red);
 }
 
-/* Анимация увеличения при лайке */
 .like-icon.is-liked .heart {
   transform-origin: center;
   animation: scale 0.3s 0.1s ease-in;
 }
 
-/* Вспышки */
 .sparks {
   opacity: 0;
 }
