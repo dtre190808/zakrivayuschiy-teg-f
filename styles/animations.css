@@ -8,97 +8,106 @@
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
-*/
-@keyframes scale {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.25);
-  }
+*/ 
+
+/* я взял код из 3 ревью и доработал вроде все теперь при зажатии контур черный и исправлена задержка с 0.5s на 0.05s. Я надеюсь что ничего не забыл  */
+@keyframes scale { 
+  from { 
+    transform: scale(1); 
+  } 
+ 
+  to { 
+    transform: scale(1.25); 
+  } 
+} 
+ 
+@keyframes sparks { 
+  from { 
+    opacity: 0; 
+  } 
+ 
+  to { 
+    opacity: 1; 
+  } 
+} 
+ 
+.like-icon:hover .main-body { 
+  opacity: 1; 
+  fill: var(--heart-original-color, #000); 
+  transition: fill 0.3s linear 0.05s; 
 }
 
-@keyframes sparks {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+.like-icon:hover .core { 
+  opacity: 1; 
+  fill: var(--heart-original-color, #000); 
+  transition: fill 0.3s ease; 
+} 
+ 
+.like-icon:active .core { 
+  opacity: 1; 
+  fill: var(--heart-animation-color, #ff0000); 
+  transition: fill 0.3s ease; 
+} 
+ 
+.like-icon:active .main-body { 
+  opacity: 1; 
+  fill: var(--heart-animation-color, #ff0000); 
+  transition: fill 0s ease; 
+} 
 
-@keyframes fill-black-then-red {
-  0% {
-    fill: transparent;
-  }
-  70% {
-    fill: var(--heart-contour-color, #000);
-  }
-  100% {
-    fill: var(--heart-animation-color, #ff0000);
-  }
-}
+.like-icon:active .contour { 
+  opacity: 1; 
+  fill: var(--heart-original-color); 
+  transition: fill 0.6s ease; 
+} 
+ 
+.like-icon:not(:hover):not(:active) .core { 
+  fill: transparent; 
+  transition: 0.3s 0.03s ease fill; 
+} 
+ 
+.like-icon:not(:hover):not(:active) .main-body { 
+  fill: transparent; 
+  transition: 0.3s fill; 
+} 
+ 
+.like-icon .contour { 
+  transition: 0.1s linear fill; 
+} 
+ 
+.like-icon.is-liked .contour { 
+  fill: var(--heart-animation-color);
+  transition: 0.3s 0.06s ease fill; 
+} 
+ 
+.like-icon.is-liked .core { 
+  fill: var(--heart-animation-color, red); 
+  transition: 0.3s fill ease; 
+} 
+ 
+.like-icon.is-liked .main-body { 
+  fill: var(--heart-animation-color, red); 
+  transition: 0.3s 0.05s ease fill; 
+} 
+ 
+.like-icon.is-liked:not(:hover):not(:active) .core { 
+  fill: var(--heart-animation-color, red); 
+} 
+ 
+.like-icon.is-liked:not(:hover):not(:active) .main-body { 
+  fill: var(--heart-animation-color, red); 
+} 
 
-.like-icon:not(.is-liked):hover:not(:active) .main-body,
-.like-icon:not(.is-liked):hover:not(:active) .core {
-  opacity: 1;
-  animation: fill-black-then-red 0.9s ease-in-out forwards;
-}
-
-.like-icon:not(.is-liked):not(:hover):not(:active) .core {
-  fill: transparent;
-  transition: 0.3s 0.03s ease fill;
-}
-
-.like-icon:not(.is-liked):not(:hover):not(:active) .main-body {
-  fill: transparent;
-  transition: 0.3s fill;
-}
-
-.like-icon .contour {
-  transition: 0.1s linear fill;
-}
-
-.like-icon:active .core,
-.like-icon:active .main-body,
-.like-icon:active .contour {
-  opacity: 1;
-  fill: var(--heart-animation-color, #ff0000);
-  transition: fill 0.3s ease;
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--heart-animation-color, #ff0000);
-  transition: 0.3s 0.06s ease fill;
-}
-
-.like-icon.is-liked .core {
-  fill: var(--heart-animation-color, red);
-  transition: 0.3s fill ease;
-}
-
-.like-icon.is-liked .main-body {
-  fill: var(--heart-animation-color, red);
-  transition: 0.3s 0.05s ease fill;
-}
-
-.like-icon.is-liked:not(:hover):not(:active) .core {
-  fill: var(--heart-animation-color, red);
-}
-
-.like-icon.is-liked:not(:hover):not(:active) .main-body {
-  fill: var(--heart-animation-color, red);
-}
-
-.like-icon.is-liked .heart {
-  transform-origin: center;
-  animation: scale 0.3s 0.1s ease-in;
-}
-
-.sparks {
-  opacity: 0;
-}
-
-.like-icon.is-liked .sparks {
-  animation: sparks 0.3s 0.3s ease-in;
-}
+ 
+.like-icon.is-liked .heart { 
+  transform-origin: center; 
+  animation: scale 0.3s 0.1s ease-in; 
+} 
+ 
+.sparks { 
+  opacity: 0; 
+} 
+ 
+.like-icon.is-liked .sparks { 
+  animation: sparks 0.3s 0.3s ease-in; 
+}  
